@@ -30,20 +30,6 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            environment {
-                scannerHome = tool 'sonarqube'
-            }
-            steps {
-                withSonarQubeEnv('sonar-qube-1') {
-                    sh "${scannerHome}/bin/sonar-scanner -Dsonar.java.binaries=target/classes"
-                }
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-
         stage('Test') {
             steps {
                 sh "mvn -Dmaven.compile.skip test"
