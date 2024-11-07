@@ -49,7 +49,7 @@ pipeline {
 
     }
     environment {
-    registry = "eduardo1492/hello-maven-job"
+    registry = "eduardo1492/maven-job"
         registryCredentials = "dockerhub_id"
         dockerImage = ""
     }
